@@ -29,6 +29,7 @@ const ProjectsPage = () => {
  
 
   const { data, isLoading } = useGetAllProjectsQuery({ ...query });
+  console.log(data)
 
 
   const meta = data?.meta;
@@ -79,7 +80,7 @@ const ProjectsPage = () => {
     {isLoading ? (
       <CustomLoader />
     ) : (
-      <ProjectDataTable data={data?.authors ?? []} columns={projectColumn} />
+      <ProjectDataTable data={data?.data ?? []} columns={projectColumn} />
     )}
   </div>
 </div>

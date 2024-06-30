@@ -1,3 +1,6 @@
+
+
+
 "use client";
 
 import { z } from "zod";
@@ -9,50 +12,47 @@ import {
     FormItem,
     FormLabel,
     FormMessage,
-
 } from "../ui/form";
-import { useForm } from "react-hook-form";
+import { useForm, useFieldArray } from "react-hook-form";
 import { Input } from "../ui/input";
 import { Button } from "../ui/button";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useRouter } from "next/navigation";
 import { toast, useToast } from "../ui/use-toast";
 import { uploadImage } from "@/utils/imgbb";
-import { Loader } from "lucide-react";
+import {  Loader2 } from "lucide-react";
 import { useState } from "react";
 import { useCreateProjectMutation } from "@/redux/features/project/projectApi";
 
 const formSchema = z
     .object({
         name: z.string().min(1, {
-            message: "Enter your yserName",
+            message: "Enter your userName",
         }),
         description: z.string().min(10, {
-            message: "Enter project description"
+            message: "Enter project description",
         }),
         technologies: z.array(z.string()).min(1, {
             message: "Enter at least one technology",
-          }),
+        }),
         githubClientLink: z.string().min(2, {
-            message: "Enter project githubClientLink"
+            message: "Enter project githubClientLink",
         }),
         githubServerLink: z.string().min(2, {
-            message: "Enter project githubServerLink"
+            message: "Enter project githubServerLink",
         }),
         liveLink: z.string().min(2, {
-            message: "Enter project liveLink"
+            message: "Enter project liveLink",
         }),
         imageUrl: z.any(),
-    })
-
+    });
 
 const CreateProjectForm = () => {
     const [createProject, { isLoading }] = useCreateProjectMutation();
     const [loading, setLoading] = useState(false);
     const router = useRouter();
     const [error, setError] = useState("");
-    const { } = useToast()
-    // const [createUser, { isLoading, isError }] = useCreateUserMutation();
+    const { } = useToast();
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
         defaultValues: {
@@ -62,8 +62,13 @@ const CreateProjectForm = () => {
             imageUrl: null,
             githubClientLink: "",
             githubServerLink: "",
-            liveLink: ""
+            liveLink: "",
         },
+    });
+
+    const { fields, append, remove } = useFieldArray({
+        control: form.control,
+        name: "technologies",
     });
 
     const onSubmit = async (values: z.infer<typeof formSchema>) => {
@@ -78,14 +83,14 @@ const CreateProjectForm = () => {
 
         try {
             const res = await createProject(values);
-            console.log(res, 'values.........')
+            console.log(res, "values.........");
 
             if (res?.data) {
                 toast({
                     title: "Success!",
-                    description: `Author created successfully`,
+                    description: `Project created successfully`,
                 });
-
+                router.push("/projects"); // Navigate to the projects page after success
             } else {
                 // setError(res?.error.error || "An unexpected error occurred.");
             }
@@ -95,6 +100,7 @@ const CreateProjectForm = () => {
             setLoading(false);
         }
     };
+
     return (
         <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)} className="w-full">
@@ -110,7 +116,6 @@ const CreateProjectForm = () => {
                                     <FormControl>
                                         <Input type="text" placeholder="Enter project name" {...field} />
                                     </FormControl>
-
                                     <FormMessage />
                                 </FormItem>
                             )}
@@ -123,12 +128,11 @@ const CreateProjectForm = () => {
                                     <FormLabel>Description</FormLabel>
                                     <FormControl>
                                         <Input
-                                            type="email"
+                                            type="text"
                                             placeholder="Enter project description"
                                             {...field}
                                         />
                                     </FormControl>
-
                                     <FormMessage />
                                 </FormItem>
                             )}
@@ -141,12 +145,11 @@ const CreateProjectForm = () => {
                                     <FormLabel>Github Client Link</FormLabel>
                                     <FormControl>
                                         <Input
-                                            type="password"
+                                            type="text"
                                             placeholder="Enter your githubClientLink"
                                             {...field}
                                         />
                                     </FormControl>
-
                                     <FormMessage />
                                 </FormItem>
                             )}
@@ -165,7 +168,6 @@ const CreateProjectForm = () => {
                                             {...field}
                                         />
                                     </FormControl>
-
                                     <FormMessage />
                                 </FormItem>
                             )}
@@ -183,18 +185,17 @@ const CreateProjectForm = () => {
                                             {...field}
                                         />
                                     </FormControl>
-
                                     <FormMessage />
                                 </FormItem>
                             )}
                         />
-                        
+
                         <FormField
                             control={form.control}
                             name="imageUrl"
                             render={({ field }) => (
                                 <FormItem>
-                                    <FormLabel>profilePhoto</FormLabel>
+                                    <FormLabel>Project Image</FormLabel>
                                     <FormControl>
                                         <Input
                                             type="file"
@@ -208,12 +209,40 @@ const CreateProjectForm = () => {
                             )}
                         />
                     </div>
-                    <Button type="submit" disabled={loading} className="w-full">
+
+                    <div className="space-y-4 space-x-2">
+                        <FormLabel>Technologies</FormLabel>
+                        {fields.map((field, index) => (
+                            <div key={field.id} className="flex items-center gap-4">
+                                <FormControl>
+                                    <Input
+                                        {...form.register(`technologies.${index}` as const)}
+                                        placeholder="Enter a technology"
+                                        className="w-full"
+                                    />
+                                </FormControl>
+                                <Button
+                                    type="button"
+                                    variant="destructive"
+                                    onClick={() => remove(index)}
+                                >
+                                    Remove
+                                </Button>
+                            </div>
+                        ))}
+                        <Button
+                            type="button"
+                            variant="outline"
+                            onClick={() => append("")}
+                        >
+                            Add Technology
+                        </Button>
+                    </div>
+
+                    <Button type="submit" disabled={loading} className="w-full mt-4">
                         Create Project
-                        {loading && <Loader className="ml-6 h-5 w-5 animate-spin" />}
+                        {loading && <Loader2 className="ml-6 h-5 w-5 animate-spin" />}
                     </Button>
-
-
                 </div>
             </form>
         </Form>
