@@ -24,7 +24,7 @@ import { uploadImage } from "@/utils/imgbb";
 
 
 
-import { Loader } from "lucide-react";
+import { Loader2 } from "lucide-react";
 import { useCreateBlogMutation } from "@/redux/features/blog/blogApi";
 import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectTrigger, SelectValue } from "../ui/select";
 
@@ -34,6 +34,9 @@ import { BlogCategory } from "@/types";
 import { useDispatch } from "react-redux";
 
 import { ToastAction } from "../ui/toast";
+import { useAppSelector } from "@/redux/hooks";
+import { useCurrentUser } from "@/redux/features/auth/authSlice";
+
 
 const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
 
@@ -50,6 +53,8 @@ const formSchema = z.object({
 const AddBlogForm = () => {
     const dispatch=useDispatch()
     const router = useRouter();
+    const user = useAppSelector(useCurrentUser);
+   
    
     const [createBlog, { isLoading }] = useCreateBlogMutation();
     const form = useForm({
@@ -63,6 +68,8 @@ const AddBlogForm = () => {
         },
     });
 
+  
+
     const onSubmit = async (values: any) => {
         if (values.image && values.image.length > 0) {
             const url = await uploadImage(values.image[0]);
@@ -71,9 +78,17 @@ const AddBlogForm = () => {
             values.image = "";
         }
 
+        const blogData={
+            ...values,
+            author:user?.id
+        }
+
+        console.log(blogData)
+        // values.author = user?._id as string;
         try {
-            const res = await createBlog(values).unwrap();
-            if (res?.id) {
+            const res = await createBlog(blogData).unwrap();
+            console.log(res)
+            if (res?.data) {
                 toast({
                     title:'Success',
                     description:"Blog added successfully",
@@ -207,8 +222,8 @@ const AddBlogForm = () => {
                     </div>
                     <div className="mt-6">
                         <Button type="submit" disabled={isLoading} className="w-full">
-                            {isLoading && <Loader className="ml-6 h-4 w-4 animate-spin" />}
                             Add Now
+                            {isLoading && <Loader2 className="ml-6 h-4 w-4 animate-spin" />}
                         </Button>
                     </div>
                 </div>

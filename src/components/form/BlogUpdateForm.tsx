@@ -15,10 +15,10 @@ import {
   import { useForm } from "react-hook-form";
   import { useEffect, useState } from "react";
 
-  import { Loader, Loader2 } from "lucide-react";
+  import {  Loader2 } from "lucide-react";
 import { useUpdateBlogMutation } from "@/redux/features/blog/blogApi";
 
-import { title } from "process";
+
 import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectTrigger, SelectValue } from "../ui/select";
 import { BlogCategory } from "@/types";
 import dynamic from "next/dynamic";
@@ -182,7 +182,7 @@ const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
                 <div className="mt-6">
                     <Button type="submit" disabled={update} className="w-full">
                         Update Now
-                        {update && <Loader className="ml-6 h-5 w-5 animate-spin" />}
+                        {update && <Loader2 className="ml-6 h-5 w-5 animate-spin" />}
                     </Button>
                 </div>
             </div>

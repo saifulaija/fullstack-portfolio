@@ -10,7 +10,7 @@ import { Menu, UserRoundPlus } from 'lucide-react';
 import Image from 'next/image';
 import { ModeToggle } from '../shared/header/ModeToggle';
 import { useAppDispatch, useAppSelector } from '@/redux/hooks';
-import { RootState } from '@/redux/store';
+
 import assets from '@/assets';
 import { useToast } from '../ui/use-toast';
 import { logout, useCurrentUser } from '@/redux/features/auth/authSlice';

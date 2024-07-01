@@ -64,6 +64,7 @@ const router =useRouter()
      router.push('/blogs')
     } catch (err: any) {
       toast({
+        variant:'destructive',
         title:'Failed',
         description:(err as any)?.data?.message || "An error occurred",
         action: (

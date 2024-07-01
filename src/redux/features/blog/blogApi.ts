@@ -18,12 +18,12 @@ const blogApi = baseApi.injectEndpoints({
             query: (options) => {
                 console.log({ options })
                 return {
-                    url: `/products/update-product/${options.productId}`,
+                    url: `/blog/update-blog/${options.id}`,
                     method: "PATCH",
-                    body: options.data,
+                    body: options.body,
                 };
             },
-            invalidatesTags: ["project"],
+            invalidatesTags: ["blog"],
         }),
    
 
@@ -49,7 +49,7 @@ const blogApi = baseApi.injectEndpoints({
 
         deleteBlog: builder.mutation({
             query: (id) => ({
-                url: `/blog/delete-blog/${id}`,
+                url: `/blog/${id}`,
                 method: "DELETE",
             }),
             invalidatesTags: ["blog"],
