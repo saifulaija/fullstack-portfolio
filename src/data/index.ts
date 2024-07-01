@@ -1,7 +1,7 @@
-// import React from "react";
-// import { CgWorkAlt } from "react-icons/cg";
-// import { FaReact } from "react-icons/fa";
-// import { LuGraduationCap } from "react-icons/lu";
+import React from "react";
+import { CgWorkAlt } from "react-icons/cg";
+import { FaReact } from "react-icons/fa";
+import { LuGraduationCap } from "react-icons/lu";
 // import corpcommentImg from "@/public/shareNest-01.png";
 // import rmtdevImg from "@/public/rmtdev.png";
 // import wordanalyticsImg from "@/public/wordanalytics.png";
@@ -38,32 +38,32 @@
 
 // ] as const;
 
-// export const experiencesData = [
-//   {
-//     title: "Master of Business Administration (MBA)",
-//     location: "Rajshahi University,Rajshahi",
-//     description:
-//       "I completed a two-year MBA in Marketing, specializing in strategic management, consumer behavior analysis, and digital marketing strategies. The program focused on practical skills through case studies and industry projects, preparing me for leadership roles in brand management, marketing strategy, and market research, enabling effective consumer engagement and organizational growth.",
-//     icon: React.createElement(LuGraduationCap),
-//     date: "2010-2012",
-//   },
-//   {
-//     title: "Higher Secondary Certificate (HSC)",
-//     location: "Cant-Public School & College,Parbatipur",
-//     description:
-//       "I worked as a front-end developer for several months and subsequently upskilled to a full-stack developer.",
-//     icon: React.createElement(CgWorkAlt),
-//     date: "2005 - 2006",
-//   },
-//   {
-//     title: "Full-Stack Developer",
-//     location: "Dinajpur, Bangladesh",
-//     description:
-//       "I'm now a full-stack developer working as a freelancer. My stack includes React, Next.js, TypeScript, PostgeSql, Tailwind, Prisma and MongoDB. I'm open to full-time opportunities.",
-//     icon: React.createElement(FaReact),
-//     date: "2024 - present",
-//   },
-// ] as const;
+export const educationData = [
+  {
+    title: "Master of Business Administration (MBA)",
+    location: "Rajshahi University,Rajshahi",
+    description:
+      "I completed a two-year MBA in Marketing, specializing in strategic management, consumer behavior analysis, and digital marketing strategies. The program focused on practical skills through case studies and industry projects, preparing me for leadership roles in brand management, marketing strategy, and market research, enabling effective consumer engagement and organizational growth.",
+    icon: React.createElement(LuGraduationCap),
+    date: "2010-2012",
+  },
+  {
+    title: "Higher Secondary Certificate (HSC)",
+    location: "Cant-Public School & College,Parbatipur",
+    description:
+      "I worked as a front-end developer for several months and subsequently upskilled to a full-stack developer.",
+    icon: React.createElement(CgWorkAlt),
+    date: "2005 - 2006",
+  },
+  {
+    title: "Full-Stack Developer",
+    location: "Dinajpur, Bangladesh",
+    description:
+      "I'm now a full-stack developer working as a freelancer. My stack includes React, Next.js, TypeScript, PostgeSql, Tailwind, Prisma and MongoDB. I'm open to full-time opportunities.",
+    icon: React.createElement(FaReact),
+    date: "2024 - present",
+  },
+] as const;
 
 
 
