@@ -54,6 +54,7 @@ export function Dashboard({ children }: { children: React.ReactNode }) {
         { label: "Home", path: "/", show: true },
         { label: "Blogs", path: "/blogs", show: true },
         { label: "Projects", path: "/projects", show: !!user },
+        { label: "Skills", path: "/skills", show: !!user },
         { label: "Add Blog", path: "/add-blog", show: !!user },
         { label: "About Us", path: "/about-us", show: true },
     ];

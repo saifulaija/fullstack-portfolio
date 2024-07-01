@@ -1,3 +1,5 @@
+
+
 import { useActiveSectionContext } from "@/context/active-section-context";
 import { SectionName } from "@/types";
 import { useEffect } from "react";
