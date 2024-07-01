@@ -12,6 +12,8 @@ import SubmitBtn from "./submit-btn";
 import { useToast } from "../ui/use-toast";
 import { ToastAction } from "../ui/toast";
 import { useSectionInView } from "@/hooks/hooks";
+import { Input } from "../ui/input";
+import { Textarea } from "../ui/textarea";
 
 
 export default function Contact() {
@@ -73,24 +75,25 @@ export default function Contact() {
 
       <form
         ref={formRef}
-        className="mt-10 flex flex-col dark:text-black"
+        className="mt-10 flex flex-col dark:text-black space-y-4"
         onSubmit={handleSubmit}
       >
-        <input
-          className="h-14 px-4 rounded-lg borderBlack dark:bg-white dark:bg-opacity-80 dark:focus:bg-opacity-100 transition-all dark:outline-none"
+        <Input
           name="senderEmail"
           type="email"
           required
           maxLength={500}
           placeholder="Your email"
         />
-        <textarea
-          className="h-52 my-3 rounded-lg borderBlack p-4 dark:bg-white dark:bg-opacity-80 dark:focus:bg-opacity-100 transition-all dark:outline-none"
+ 
+        <Textarea
           name="message"
           placeholder="Your message"
           required
+          rows={8}
           maxLength={5000}
         />
+   
         <SubmitBtn loading={loading} />
       </form>
     </motion.section>
