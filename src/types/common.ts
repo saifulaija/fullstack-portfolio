@@ -1,4 +1,5 @@
 import { USER_ROLE } from "@/constant/role";
+import { links } from "@/lib/constant";
 
 
 
@@ -161,3 +162,4 @@ export type T= {
 }
 
 
+export type SectionName = (typeof links)[number]["name"];
