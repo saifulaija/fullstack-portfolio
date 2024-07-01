@@ -23,7 +23,7 @@ export default function Projects() {
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 sm:grid-cols-1 lg:grid-cols-2 gap-3">
           {projects.map((project:TProject) => (
-            <Project key={project._id} {...project} />
+            <Project key={project._id} project={project}  />
           ))}
         </div>
       </div>

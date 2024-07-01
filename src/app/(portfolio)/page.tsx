@@ -2,6 +2,7 @@ import Intro from "@/components/home/Intro";
 import About from "@/components/home/about";
 
 import Projects from "@/components/home/projects";
+import Skills from "@/components/home/skills";
 
 
 
@@ -11,6 +12,7 @@ export default function Home() {
     <Intro />
     <About/>
     <Projects/>
+    <Skills/>
   
   </main>
   );
