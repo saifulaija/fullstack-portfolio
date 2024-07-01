@@ -17,8 +17,7 @@ import { HardDriveDownload, Menu } from "lucide-react";
 export default function Header() {
   const router = useRouter();
   const pathname = usePathname();
-  const { activeSection, setActiveSection, setTimeOfLastClick } = useActiveSectionContext(); // State and context 
-
+  const { activeSection, setActiveSection, setTimeOfLastClick } = useActiveSectionContext(); 
   const handleNavigation = (link: any) => {
     if (link.hash.startsWith("#")) {
       if (pathname.startsWith("/blogs")) {

@@ -29,6 +29,7 @@ export function Dashboard({ children }: { children: React.ReactNode }) {
     const dispatch = useAppDispatch();
     const user = useAppSelector(useCurrentUser);
     const [scrolled, setScrolled] = useState(false);
+    console.log(user)
 
     useEffect(() => {
         const handleScroll = () => {

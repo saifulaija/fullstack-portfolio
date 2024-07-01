@@ -1,12 +1,8 @@
 
-
-
 "use client";
-
 import React, { useRef, useState } from "react";
 import SectionHeading from "./section-heading";
 import { motion } from "framer-motion";
-
 import { sendEmail } from "@/actions/sendEmail";
 import SubmitBtn from "./submit-btn";
 import { useToast } from "../ui/use-toast";
@@ -14,8 +10,6 @@ import { ToastAction } from "../ui/toast";
 import { useSectionInView } from "@/hooks/hooks";
 import { Input } from "../ui/input";
 import { Textarea } from "../ui/textarea";
-
-
 export default function Contact() {
   const { ref } = useSectionInView("Contact");
   const formRef = useRef<HTMLFormElement | null>(null);
