@@ -83,7 +83,7 @@ export default function Header() {
   }, []);
 
   return (
-    <header className={`sticky top-0 flex h-16 items-center z-50 transition-shadow duration-300 justify-between gap-4 px-4 md:px-6 ${scrolled ? "shadow-md bg-background/90 backdrop-blur-lg" : "bg-background/70"}`}>
+    <header className={`sticky top-0 flex h-16 items-center z-50 transition-shadow duration-300 justify-between gap-4 px-4 md:px-20 ${scrolled ? "shadow-md bg-background/90 backdrop-blur-lg" : "bg-background/70"}`}>
       <div className="flex items-center">
         <Link href="/" className="flex-start">
           <Image
