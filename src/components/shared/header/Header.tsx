@@ -131,7 +131,7 @@ export default function Header() {
         <ModeToggle />
         <Button variant='outline' className="group">
   <a
-    href="/CV.pdf"
+    href="/resume.pdf"
     download
     className="flex items-center space-x-2"
   >
