@@ -57,7 +57,7 @@ export function Dashboard({ children }: { children: React.ReactNode }) {
         { label: "Projects", path: "/projects", show: !!user },
         { label: "Skills", path: "/skills", show: !!user },
         { label: "Add Blog", path: "/add-blog", show: !!user },
-        { label: "About Us", path: "/about-us", show: true },
+        { label: "Contact Me", path: "/contact", show: true },
     ];
 
     return (

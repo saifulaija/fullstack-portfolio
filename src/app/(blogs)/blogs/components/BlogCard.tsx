@@ -11,8 +11,7 @@ import { IBlog } from '@/types/blog.type'
 import { useState, useEffect } from 'react'
 import { useToast } from '@/components/ui/use-toast'
 import { ToastAction } from '@/components/ui/toast'
-import MyDialog from '@/components/shadcn/MyDialog'
-import BlogDetailsCard from './BlogDetailsCard'
+
 
 const BlogCard = ({ blog }: { blog: IBlog }) => {
     const { toast } = useToast()
@@ -101,9 +100,8 @@ const BlogCard = ({ blog }: { blog: IBlog }) => {
             <CardContent className="p-2">
                 <p className="text-lg font-semibold">{truncatedTitle}</p>
             </CardContent>
-            <CardFooter className='flex justify-between items-center p-2'>
-                <div className="flex items-center gap-1">
-                    {/* Social share icons */}
+            <CardFooter className='flex justify-between items-center gap-2 p-2'>
+               
                     <a href={whatsappShareUrl} target="_blank" rel="noopener noreferrer" className="text-green-600 hover:text-green-800">
                         <FaWhatsapp className="w-5 h-5" />
                     </a>
@@ -120,7 +118,7 @@ const BlogCard = ({ blog }: { blog: IBlog }) => {
                         {isBookmarked ? <BookmarkCheck className="w-5 h-5" /> : <Bookmark className="w-5 h-5" />}
                     </Button>
 
-                    <Button variant="ghost" onClick={handleVote}>
+                    <Button variant="ghost" className='text-gray-500 font-bold' onClick={handleVote}>
                         <ArrowBigUp className={`w-5 h-5 ${isUpvoted ? 'text-green-600' : ''}`} />
                         {voteCount}
                     </Button>
@@ -128,7 +126,7 @@ const BlogCard = ({ blog }: { blog: IBlog }) => {
                     <Button onClick={handleDetails} className="w-full group">Read More
                         <ChevronRight className="transition-transform duration-300 ease-in-out transform group-hover:translate-x-1" />
                     </Button>
-                </div>
+             
 
             </CardFooter>
 

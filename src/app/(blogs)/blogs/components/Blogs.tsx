@@ -93,7 +93,7 @@ const Blogs = () => {
                         {isLoading ? (
                             <CustomLoader/>
                         ) : (data?.data?.length ?? 0) > 0 ? (
-                            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
                                 {data?.data?.map((blog: IBlog) => (
                                     <BlogCard blog={blog} key={blog._id} />
                                 ))}

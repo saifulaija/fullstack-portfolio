@@ -21,8 +21,8 @@ export const APP_DESCRIPTION =
       hash: "#skills",
     },
     {
-      name: "Education",
-      hash: "#education",
+      name: "Service",
+      hash: "#service",
     },
     {
       name: "Blogs",

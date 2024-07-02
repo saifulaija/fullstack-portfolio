@@ -1,23 +1,8 @@
 'use client'
 import { useGetSingleBlogQuery } from "@/redux/features/blog/blogApi";
-
-
-
-
-
 import Image from "next/image";
 import ReactHtmlParser from "html-react-parser";
-import { useState } from "react";
-
-
-
-
-
-
-
-import { useToast } from "@/components/ui/use-toast";
 import CustomLoader from "@/components/shared/customLoader/CustomLoader";
-
 const BlogDetailsCard = ({ blogId }: { blogId: string }) => {
 
     const { data, isLoading } = useGetSingleBlogQuery(blogId);

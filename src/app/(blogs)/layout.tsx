@@ -3,6 +3,7 @@ import React from 'react';
 import { Metadata } from 'next';
 
 import { Dashboard } from '@/components/dashboard/Dashboard';
+import Footer from '@/components/shared/footer/Footer';
 
 export const metadata: Metadata = {
   title: " Saiful | Blogs",
@@ -15,6 +16,8 @@ const DashboardLayout = ({ children }: { children: React.ReactNode}) => {
       <Dashboard>
         {children}
       </Dashboard>
+        <Footer/>
+
     </div>
   );
 };

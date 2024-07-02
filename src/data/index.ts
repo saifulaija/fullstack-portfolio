@@ -124,3 +124,61 @@ export const skillsData = [
   "PostgreSQL",
   "Framer Motion",
 ] as const;
+
+
+export const servicesData = {
+  services: [
+    {
+      title: "Web Development",
+      details: [
+        {
+          type: "Frontend Development",
+          description: "Creating responsive and interactive user interfaces using HTML, CSS, JavaScript, and modern frameworks like React, Angular, or Vue.js."
+        },
+        {
+          type: "Backend Development",
+          description: "Building robust server-side applications with Node.js, Express.js, Django, Ruby on Rails, or other backend technologies."
+        }
+      ]
+    },
+    {
+      title: "Database Management",
+      details: [
+        {
+          type: "Database Design",
+          description: "Designing efficient database schemas for relational (e.g., PostgreSQL, MySQL) and non-relational databases (e.g., MongoDB)."
+        },
+        {
+          type: "Database Optimization",
+          description: "Ensuring database performance, indexing, and query optimization."
+        }
+      ]
+    },
+    {
+      title: "API Development",
+      details: [
+        {
+          type: "RESTful APIs",
+          description: "Creating scalable and secure RESTful APIs for client-server communication."
+        },
+        {
+          type: "GraphQL",
+          description: "Developing flexible and efficient GraphQL APIs for modern applications."
+        }
+      ]
+    },
+    {
+      title: "Employment Opportunities",
+      details: [
+        {
+          type: "Part-time Job",
+          description: "Available for part-time positions to contribute to your projects with flexible hours."
+        },
+        {
+          type: "Full-time Job",
+          description: "Open to full-time roles, providing dedicated and consistent support for your development needs."
+        }
+      ]
+    }
+  ]
+};

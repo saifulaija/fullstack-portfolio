@@ -8,7 +8,7 @@ import { useLoginMutation } from "@/redux/features/auth/authApi";
 import { setUser } from "@/redux/features/auth/authSlice";
 import { ToastAction } from "@/components/ui/toast";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
-import { CardHeader } from "@/components/ui/card";
+import { Card, CardHeader } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Loader2 } from "lucide-react";
@@ -75,11 +75,11 @@ const router =useRouter()
   };
 
   return (
-  <div  className="flex justify-center items-center min-h-screen">
+  <div  className="flex justify-center items-center">
       <div>
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="w-full">
-            <div className="w-full max-w-md space-y-4 p-4 border-0 shadow-sm">
+            <Card className="w-full max-w-md space-y-4 p-4  shadow-sm">
               <CardHeader>
                 <h2 className="text-xl  md:text-2xl font-semibold text-primary">Login</h2>
                 <p>
@@ -128,7 +128,7 @@ const router =useRouter()
                 Login
                 {isLoading && <Loader2 className="ml-6 h-5 w-5 animate-spin" />}
               </Button>
-            </div>
+            </Card>
           </form>
         </Form>
       </div>

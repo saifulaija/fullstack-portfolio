@@ -1,23 +1,76 @@
+// import type { Metadata } from "next";
+
+// import "./globals.css";
+// import { cn } from "@/lib/utils"
+
+// import { Poppins as FontSans } from 'next/font/google'
+// import Providers from "@/lib/providers/providers";
+// import { ThemeProvider } from "@/lib/providers/theme-provider";
+// import { Toaster } from "@/components/ui/toaster"
+// import ActiveSectionContextProvider from "@/context/active-section-context";
+
+
+// const fontSans = FontSans({
+//   subsets: ["latin"],
+//   weight: ['400', '600'],
+//   variable: "--font-sans",
+// })
+// export const metadata: Metadata = {
+//   title: "Saiful | Portfolio",
+//   description: 'An portfolio built with Next.js, Postgres, Shadcn'
+// };
+
+// export default function RootLayout({
+//   children,
+// }: Readonly<{
+//   children: React.ReactNode;
+// }>) {
+//   return (
+//     <html lang="en">
+//       <body className={cn(
+//         "min-h-screen bg-background font-sans antialiased",
+//         fontSans.variable
+//       )}>
+
+//         <ActiveSectionContextProvider>
+//           <Providers>
+//             <ThemeProvider
+//               attribute="class"
+//               defaultTheme="system"
+//               enableSystem
+//               disableTransitionOnChange
+//             >
+  
+//               {children}
+//             </ThemeProvider>
+//           </Providers>
+//           <Toaster />
+//         </ActiveSectionContextProvider>
+//       </body>
+//     </html>
+//   );
+// }
+
 import type { Metadata } from "next";
 
 import "./globals.css";
-import { cn } from "@/lib/utils"
+import { cn } from "@/lib/utils";
 
-import { Poppins as FontSans } from 'next/font/google'
+import { Roboto as FontSans } from 'next/font/google';
 import Providers from "@/lib/providers/providers";
 import { ThemeProvider } from "@/lib/providers/theme-provider";
-import { Toaster } from "@/components/ui/toaster"
+import { Toaster } from "@/components/ui/toaster";
 import ActiveSectionContextProvider from "@/context/active-section-context";
-
 
 const fontSans = FontSans({
   subsets: ["latin"],
-  weight: ['400', '600'],
+  weight: ['100', '300'], // Include the weights you want to use
   variable: "--font-sans",
-})
+});
+
 export const metadata: Metadata = {
   title: "Saiful | Portfolio",
-  description: 'An portfolio built with Next.js, Postgres, Shadcn'
+  description: 'A portfolio built with Next.js, Postgres, Shadcn',
 };
 
 export default function RootLayout({
@@ -27,11 +80,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={cn(
-        "min-h-screen bg-background font-sans antialiased",
-        fontSans.variable
-      )}>
-
+      <body
+        className={cn(
+          "min-h-screen bg-background font-sans antialiased",
+          fontSans.variable
+        )}
+      >
         <ActiveSectionContextProvider>
           <Providers>
             <ThemeProvider
@@ -40,7 +94,6 @@ export default function RootLayout({
               enableSystem
               disableTransitionOnChange
             >
-  
               {children}
             </ThemeProvider>
           </Providers>
@@ -50,3 +103,4 @@ export default function RootLayout({
     </html>
   );
 }
+
