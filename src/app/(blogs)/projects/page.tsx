@@ -29,7 +29,7 @@ const ProjectsPage = () => {
  
 
   const { data, isLoading } = useGetAllProjectsQuery({ ...query });
-  console.log(data)
+  
 
 
   const meta = data?.meta;
@@ -56,7 +56,7 @@ const ProjectsPage = () => {
       <MyDialog
         triggerButton={
           <Button className="group flex items-center gap-2 bg-primary text-white rounded-md py-2 px-4 hover:bg-primary-dark focus:outline-none focus:ring focus:border-primary-dark">
-            <span>Create an Author</span>
+            <span>Add Project</span>
             <ChevronRight className="transition-transform duration-300 ease-in-out transform group-hover:translate-x-1" />
           </Button>
         }

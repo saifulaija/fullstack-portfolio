@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { AlertCircle, RefreshCcw } from "lucide-react";
-import noDataImage from "@/assets/no-data.svg"; // Adjust the path as necessary
+import Image from 'next/image';
 import assets from "@/assets";
 
 interface NoDataProps {
@@ -18,7 +18,13 @@ export function NoData({
 }: NoDataProps) {
   return (
     <div className="flex flex-col items-center justify-center h-full p-4 text-center">
-      <img src={assets.images.noDataFound} alt="No Data" className="w-1/2 max-w-xs mb-4" />
+      <Image 
+        src={assets.images.logo} 
+        alt="No Data" 
+        width={200} // replace with your desired width
+        height={200} // replace with your desired height
+        className="w-1/2 max-w-xs mb-4" 
+      />
       <AlertCircle className="w-12 h-12 text-gray-400 mb-4" />
       <h2 className="text-xl font-semibold text-gray-700">{message}</h2>
       <p className="text-gray-500 mb-4">{description}</p>

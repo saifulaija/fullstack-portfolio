@@ -16,7 +16,7 @@ import React, { useState } from 'react'
 import { useGetAllSkillsQuery } from '@/redux/features/skill/skillApi'
 import { frontendSkillColumn} from './components/frontendSkillColumn'
 import { FrontendSkillDataTable } from './components/frontendSkillDataTable'
-import CreateSkillForm from '@/components/form/CreateSkillForm'
+
 import AddBlogForm from '@/components/form/AddBlogForm'
 import AddFrontendSkillForm from '@/components/form/AddFrontendSkill'
 import { SkillsTab } from '@/components/shared/skillsTab/SkillsTab'
