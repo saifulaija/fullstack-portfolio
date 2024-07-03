@@ -17,7 +17,7 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { DataTablePagination } from "@/components/shared/dataTablePagination/DataTablePagination";
-
+// import { DataTablePagination } from "@/components/shared/DataTablePagination/DataTablePagination";
 
 
 
@@ -26,10 +26,9 @@ interface DataTableProps<TData, TValue> {
   data: TData[];
 }
 
-export function BlogDataTable<TData, TValue>({
+export function BackendSkillDataTable<TData, TValue>({
   columns,
   data,
-  
 }: DataTableProps<TData, TValue>) {
   const table = useReactTable({
     data,

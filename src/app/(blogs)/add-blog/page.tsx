@@ -23,7 +23,7 @@ import { useGetAllBlogsQuery } from '@/redux/features/blog/blogApi'
 const AddBlogPage = () => {
   const query: Record<string, any> = {};
   const [page, setPage] = useState(1);
-  const [limit, setLimit] = useState(8);
+  const [limit, setLimit] = useState(2);
   query["page"] = page;
   query["limit"] = limit;
   const [q, setQ] = useState<string>("");

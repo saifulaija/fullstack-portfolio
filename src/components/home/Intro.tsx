@@ -39,7 +39,7 @@ export default function Intro() {
 <span className="italic font-medium"> websites and applications</span>, with a strong focus on 
 <span className="underline font-bold"> React (Next.js),MongoDB and PostgreSQL</span>.
           <motion.div
-            className="flex flex-col sm:flex-row  gap-2 text-lg font-medium mt-4"
+            className="flex flex-col sm:flex-row  gap-2 text-lg font-medium mt-6"
             initial={{ opacity: 0, y: 100 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}

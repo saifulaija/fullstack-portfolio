@@ -23,6 +23,7 @@ import { uploadImage } from "@/utils/imgbb";
 import {  Loader2 } from "lucide-react";
 import { useState } from "react";
 import { useCreateProjectMutation } from "@/redux/features/project/projectApi";
+import { ToastAction } from "../ui/toast";
 
 const formSchema = z
     .object({
@@ -89,10 +90,13 @@ const CreateProjectForm = () => {
                 toast({
                     title: "Success!",
                     description: `Project created successfully`,
+                    action: (
+                        <ToastAction altText="Goto schedule to undo">Undo</ToastAction>
+                    ),
                 });
-                router.push("/projects"); // Navigate to the projects page after success
+               
             } else {
-                // setError(res?.error.error || "An unexpected error occurred.");
+                setError("An unexpected error occurred.");
             }
         } catch (err: any) {
             setError(err?.message || "An unexpected error occurred.");

@@ -10,9 +10,9 @@ const projectApi = baseApi.injectEndpoints({
             query: (options) => {
                 console.log({ options })
                 return {
-                    url: `/products/update-product/${options.productId}`,
+                    url: `/project/update-project/${options.id}`,
                     method: "PATCH",
-                    body: options.data,
+                    body: options.body,
                 };
             },
             invalidatesTags: ["project"],
@@ -29,7 +29,7 @@ const projectApi = baseApi.injectEndpoints({
         getAllProjects: builder.query({
             query: () => {
                 return {
-                    url: '/project/get-projects',
+                    url: '/project',
                     method: "GET",
                 };
             },
@@ -48,8 +48,8 @@ const projectApi = baseApi.injectEndpoints({
 
         deleteProjects: builder.mutation({
             query: (id) => ({
-                url: `/products/delete-product/${id}`,
-                method: "PATCH",
+                url: `/project/delete-project/${id}`,
+                method: "DELETE",
             }),
             invalidatesTags: ["project"],
         }),

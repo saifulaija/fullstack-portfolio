@@ -3,28 +3,24 @@
 import MyAlertDialog from "@/components/shadcn/MyAlertDialog";
 import { ToastAction } from "@/components/ui/toast";
 import { useToast } from "@/components/ui/use-toast";
-
-
-import { useDeleteSkillMutation } from "@/redux/features/skill/skillApi";
-
-
+import { useDeleteBackendSkillMutation } from "@/redux/features/backendSkill/backendSkillApi";
 interface DeleteSkillProps {
   skillId: string;
 }
 
-const DeleteSkill: React.FC<DeleteSkillProps> = ({ skillId }) => {
+const DeleteBackendSkill: React.FC<DeleteSkillProps> = ({ skillId }) => {
   const { toast } = useToast();
-  const [deleteBlogger, { isLoading }] =useDeleteSkillMutation();
+  const [deleteBackendSkill, { isLoading }] =useDeleteBackendSkillMutation();
 
   const handleDelete = async () => {
     try {
-      const res = await deleteBlogger(skillId).unwrap();
+      const res = await deleteBackendSkill(skillId).unwrap();
       
 
       if (res.data) {
         toast({
           title: "Success",
-          description: "Author deleted successfully",
+          description: "Backend skill deleted successfully",
           action: (
             <ToastAction altText="Goto schedule to undo">Undo</ToastAction>
         ),
@@ -53,4 +49,4 @@ const DeleteSkill: React.FC<DeleteSkillProps> = ({ skillId }) => {
   );
 };
 
-export default DeleteSkill;
+export default DeleteBackendSkill;

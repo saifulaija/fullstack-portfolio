@@ -4,6 +4,7 @@ import About from "@/components/home/about";
 import Contact from "@/components/home/contact";
 import Education from "@/components/home/education";
 
+
 import Projects from "@/components/home/projects";
 import Service from "@/components/home/service";
 import Skills from "@/components/home/skills";
@@ -18,7 +19,7 @@ export default function Home() {
     <About/>
     <Projects/>
     <Skills/>
- <Education/>
+ {/* <Education/> */}
     <Service/>
     <Contact/>
 

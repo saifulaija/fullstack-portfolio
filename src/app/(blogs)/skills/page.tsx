@@ -14,13 +14,24 @@ import { ChevronRight, Search } from 'lucide-react'
 import React, { useState } from 'react'
 
 import { useGetAllSkillsQuery } from '@/redux/features/skill/skillApi'
-import { skillColumn } from './components/skillColumn'
-import { SkillDataTable } from './components/skillDataTable'
+import { frontendSkillColumn} from './components/frontendSkillColumn'
+import { FrontendSkillDataTable } from './components/frontendSkillDataTable'
 import CreateSkillForm from '@/components/form/CreateSkillForm'
+import AddBlogForm from '@/components/form/AddBlogForm'
+import AddFrontendSkillForm from '@/components/form/AddFrontendSkill'
+import { SkillsTab } from '@/components/shared/skillsTab/SkillsTab'
+import { useGetAllFrontendSkillsQuery } from '@/redux/features/frontendSkill/frontendSkillApi'
+import SectionHeading from '@/components/home/section-heading'
+import { BackendSkillDataTable } from './components/backendSkillDataTable'
+import { backendSkillColumn } from './components/backendSkillColumn'
+import { useGetAllBackendSkillsQuery } from '@/redux/features/backendSkill/backendSkillApi'
+import { useGetAllToolsSkillsQuery } from '@/redux/features/toolsSkill/tollsSkillApi'
+import { ToolsSkillDataTable } from './components/toolsSkillDataTable'
+import { toolsSkillColumn } from './components/toolsSkillColumn'
 
 
 
-const ProjectsPage = () => {
+const SkillsPage = () => {
   const query: Record<string, any> = {};
   const [page, setPage] = useState(1);
   const [limit, setLimit] = useState(8);
@@ -31,49 +42,39 @@ const ProjectsPage = () => {
 
  
 
-  const { data, isLoading } = useGetAllSkillsQuery({ ...query });
-  console.log(data)
+  const { data:frontendSkill, isLoading:frontendLoading } = useGetAllFrontendSkillsQuery({ ...query });
+  const { data:backendSkill, isLoading:backendLoading } = useGetAllBackendSkillsQuery({ ...query });
+  const { data:toolsSkill, isLoading:toolsLoading } = useGetAllToolsSkillsQuery({ ...query });
 
-
-  const meta = data?.meta;
-
-  const handlePrePage = () => {
-    if (page > 1) {
-      setPage(page - 1);
-    }
-  };
-
-  const handleNextPage = () => {
-    if (page < pageCount) {
-      setPage(page + 1);
-    }
-  };
-
-  const pageCount = meta?.total ? Math.ceil(meta.total / limit) : 0;
-  const pages = Array.from({ length: pageCount }, (_, index) => index + 1);
   return (
 <div className="w-full">
-  <div className="md:flex md:justify-between items-center mb-5 space-y-2">
+  <div className=" flex justify-center items-center mb-5 space-y-2">
     {/* Search input */}
-    <div className='flex items-center justify-center mx-auto md:mx-0'>
-      <MyDialog
-        triggerButton={
-          <Button className="group flex items-center gap-2 bg-primary text-white rounded-md py-2 px-4 hover:bg-primary-dark focus:outline-none focus:ring focus:border-primary-dark">
-            <span>Create Skills</span>
-            <ChevronRight className="transition-transform duration-300 ease-in-out transform group-hover:translate-x-1" />
-          </Button>
-        }
-      >
-       <CreateSkillForm/>
-      </MyDialog>
-    </div>
-  
+   
+  <SkillsTab/>
   </div>
   <div className="flex-grow">
-    {isLoading ? (
+    <SectionHeading>All Frontend Skills</SectionHeading>
+    {frontendLoading ? (
       <CustomLoader />
     ) : (
-      <SkillDataTable data={data?.data ?? []} columns={skillColumn} />
+      <FrontendSkillDataTable data={frontendSkill?.data ?? []} columns={frontendSkillColumn} />
+    )}
+  </div>
+  <div className="flex-grow">
+    <SectionHeading>All Backend Skills</SectionHeading>
+    {backendLoading ? (
+      <CustomLoader />
+    ) : (
+      <BackendSkillDataTable data={backendSkill?.data ?? []} columns={backendSkillColumn} />
+    )}
+  </div>
+  <div className="flex-grow">
+    <SectionHeading>All Tools Skills</SectionHeading>
+    {backendLoading ? (
+      <CustomLoader />
+    ) : (
+      <ToolsSkillDataTable data={toolsSkill?.data ?? []} columns={toolsSkillColumn} />
     )}
   </div>
 </div>
@@ -81,4 +82,4 @@ const ProjectsPage = () => {
   )
 }
 
-export default ProjectsPage
+export default SkillsPage

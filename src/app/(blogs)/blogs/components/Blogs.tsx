@@ -64,11 +64,11 @@ const Blogs = () => {
         <div className="w-full">
             <div className="wrapper">
                 <div>
-                    <h1 className="text-2xl font-semibold text-center">All Blogs</h1>
+                    <h1 className="text-2xl font-semibold text-center mb-10">All Blogs</h1>
 
                   
 
-                    <div className="w-full flex justify-center items-center my-5">
+                    {/* <div className="w-full flex justify-center items-center my-5">
                         <div className="my-5 w-full max-w-md md:max-w-lg">
                             <motion.div
                                 className="relative w-full"
@@ -87,7 +87,7 @@ const Blogs = () => {
                                 />
                             </motion.div>
                         </div>
-                    </div>
+                    </div> */}
 
                     <div className="w-full">
                         {isLoading ? (

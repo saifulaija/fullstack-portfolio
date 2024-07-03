@@ -16,8 +16,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { DataTablePagination } from "@/components/shared/dataTablePagination/DataTablePagination";
-
+// import { DataTablePagination } from "@/components/shared/DataTablePagination/DataTablePagination";
 
 
 
@@ -26,19 +25,18 @@ interface DataTableProps<TData, TValue> {
   data: TData[];
 }
 
-export function BlogDataTable<TData, TValue>({
+export function ToolsSkillDataTable<TData, TValue>({
   columns,
   data,
-  
 }: DataTableProps<TData, TValue>) {
   const table = useReactTable({
     data,
     columns,
     initialState: {
-      pagination: {
-        pageSize: 2, // Set default rows per page to 2
+        pagination: {
+          pageSize: 2, // Set default rows per page to 2
+        },
       },
-    },
     getCoreRowModel: getCoreRowModel(),
     getPaginationRowModel: getPaginationRowModel(),
   });
@@ -97,7 +95,7 @@ export function BlogDataTable<TData, TValue>({
         </Table>
       </div>
 
-      <DataTablePagination table={table} />
+      {/* <DataTablePagination table={table} /> */}
     </>
   );
 }

@@ -1,6 +1,7 @@
 
 "use client";
 import { z } from "zod";
+
 import {
     Form,
     FormControl,
@@ -13,44 +14,48 @@ import { useForm, useFieldArray } from "react-hook-form";
 import { Input } from "../ui/input";
 import { Button } from "../ui/button";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useRouter } from "next/navigation";
-import { toast, useToast } from "../ui/use-toast";
-import {  Loader2, PlusIcon } from "lucide-react";
-import { useState } from "react";
-import { useCreateProjectMutation } from "@/redux/features/project/projectApi";
-import { useCreateFrontendSkillMutation } from "@/redux/features/frontendSkill/frontendSkillApi";
+
+import { useToast } from "../ui/use-toast";
+import { Loader2, PlusIcon } from "lucide-react";
+
+
+import { useCreateBackendSkillMutation } from "@/redux/features/backendSkill/backendSkillApi";
 import { ToastAction } from "../ui/toast";
+
 const formSchema = z
     .object({
         name: z.string().min(1, {
-            message: "Enter frontend skill name",
+            message: "Enter your backend skill name",
         }),
-       
+
     });
-const AddFrontendSkillForm = () => {
-    const [createFrontendSkill, { isLoading }] = useCreateFrontendSkillMutation();
-    const {toast } = useToast();
+const AddBackendSkillForm = () => {
+    const [createBackendSkill, { isLoading }] = useCreateBackendSkillMutation();
+    const { toast } = useToast();
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
         defaultValues: {
             name: "",
+
         },
     });
+
     const onSubmit = async (values: z.infer<typeof formSchema>) => {
+
         try {
-            const res = await createFrontendSkill(values);
+            const res = await createBackendSkill(values);
             console.log(res, "values.........");
 
             if (res?.data) {
                 toast({
                     title: "Success!",
-                    description: `Frontend skill created successfully`,
+                    description: `Backend skill created successfully`,
                     action: (
                         <ToastAction altText="Goto schedule to undo">Undo</ToastAction>
                     ),
                 });
-             
-            } 
+
+            }
         } catch (err: any) {
             toast({
                 title: "Failed!",
@@ -59,14 +64,14 @@ const AddFrontendSkillForm = () => {
                     <ToastAction altText="Goto schedule to undo">Undo</ToastAction>
                 ),
             });
-        } 
+        }
     };
 
     return (
         <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)} className="w-full">
                 <div className="w-full space-y-4 md:px-4 py-6">
-                   
+
                     <div className="w-full">
                         <FormField
                             control={form.control}
@@ -75,7 +80,7 @@ const AddFrontendSkillForm = () => {
                                 <FormItem>
                                     <FormLabel>Name</FormLabel>
                                     <FormControl>
-                                        <Input type="text" placeholder="Enter frontend skill name" {...field} />
+                                        <Input type="text" placeholder="Enter backend skill name" {...field} />
                                     </FormControl>
                                     <FormMessage />
                                 </FormItem>
@@ -83,7 +88,7 @@ const AddFrontendSkillForm = () => {
                         />
                     </div>
                     <Button type="submit" disabled={isLoading} className="w-full mt-4">
-                        Add Frontend Skill
+                        Add Backend Skill
                         <PlusIcon className="ml-2" />
                         {isLoading && <Loader2 className="ml-6 h-5 w-5 animate-spin" />}
                     </Button>
@@ -93,4 +98,4 @@ const AddFrontendSkillForm = () => {
     );
 };
 
-export default AddFrontendSkillForm;
+export default AddBackendSkillForm;
