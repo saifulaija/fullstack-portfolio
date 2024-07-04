@@ -17,7 +17,7 @@ export default function Intro() {
     <section
       ref={ref}
       id="home"
-      className=" container mx-auto flex  md:flex-row flex-col gap-4 items-center justify-evenly mb-10 md:mb-0  mt-20"
+      className="px-1 md:px-0 max-w-[1200px] w-full mx-auto gap-4 md:gap-0 flex  md:flex-row flex-col  items-center justify-center my-16"
     >
     
       <div className="flex-1">

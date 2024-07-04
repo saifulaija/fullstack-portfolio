@@ -54,6 +54,14 @@ const blogApi = baseApi.injectEndpoints({
             }),
             invalidatesTags: ["blog"],
         }),
+        countVote: builder.mutation({
+            query: (options) => ({
+                url: `/blog/vote-blog/${options.id}`,
+                method: "PATCH",
+                body: { action: options.action },
+            }),
+            invalidatesTags: ["blog"],
+        }),
     }),
 });
 
@@ -62,5 +70,6 @@ export const {
  useGetAllBlogsQuery,
  useGetSingleBlogQuery,
 useDeleteBlogMutation,
- useUpdateBlogMutation
+ useUpdateBlogMutation,
+ useCountVoteMutation
 } = blogApi;

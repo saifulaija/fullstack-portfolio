@@ -24,7 +24,7 @@ export default function Service() {
     <motion.section
       id="service"
       ref={ref}
-      className="mb-20 sm:mb-28  w-full container"
+      className="mb-20 sm:mb-28  w-full px-1 md:px-0 md:container"
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
       transition={{ duration: 1 }}

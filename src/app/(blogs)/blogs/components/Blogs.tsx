@@ -12,11 +12,6 @@ import {
     PaginationNext,
     PaginationPrevious,
 } from "@/components/ui/pagination";
-
-
-
-
-
 import { motion } from 'framer-motion';
 import { NoData } from "@/components/shared/noData/NoData";
 import CustomLoader from "@/components/shared/customLoader/CustomLoader";

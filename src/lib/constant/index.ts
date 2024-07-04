@@ -29,6 +29,10 @@ export const APP_DESCRIPTION =
       hash: "/blogs"
     },
     {
+      name: "Education",
+      hash: "#education"
+    },
+    {
       name: "Contact",
       hash: "#contact",
     },

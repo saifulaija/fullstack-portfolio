@@ -143,7 +143,7 @@ export default function Header() {
       <div className="flex md:hidden">
         <Sheet>
           <SheetTrigger asChild>
-            <Button variant="outline" size="icon">
+            <Button aria-hidden='true' variant="outline" size="icon">
               <Menu className="h-5 w-5" />
               <span className="sr-only">Toggle navigation menu</span>
             </Button>
