@@ -71,7 +71,7 @@ const SkillsPage = () => {
   </div>
   <div className="flex-grow">
     <SectionHeading>All Tools Skills</SectionHeading>
-    {backendLoading ? (
+    {toolsLoading ? (
       <CustomLoader />
     ) : (
       <ToolsSkillDataTable data={toolsSkill?.data ?? []} columns={toolsSkillColumn} />

@@ -286,7 +286,7 @@ const BlogCard = ({ blog }: { blog: IBlog }) => {
     const { toast } = useToast()
     const router = useRouter()
     const truncatedTitle = truncateTitle(blog?.title, 30)
-    const currentUrl = `${process.env.NEXT_PUBLIC_SITE_URL}/blogs/details/${blog?._id}`
+    const currentUrl = `https://saifulislam-portfolio-pro.vercel.app/blogs/details/${blog?._id}`
     const whatsappShareUrl = `https://api.whatsapp.com/send?text=${encodeURIComponent(`${blog?.title} - ${currentUrl}`)}`
     const facebookShareUrl = `https://www.facebook.com/sharer/sharer.php?display=page&u=${encodeURIComponent(currentUrl)}`
     const linkedinShareUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(currentUrl)}`
@@ -346,7 +346,7 @@ const BlogCard = ({ blog }: { blog: IBlog }) => {
     }
 
     return (
-        <Card onClick={handleDetails} className="w-full max-w-md outline-0 focus:ring-2 hover:bg-muted-foreground/15 ring-primary transition duration-300 rounded-md relative group">
+        <Card onClick={handleDetails} className="w-full hover:cursor-pointer max-w-md outline-0 focus:ring-2 hover:bg-muted-foreground/15 ring-primary transition duration-300 rounded-md relative group">
             <CardHeader className="p-0 items-center">
                 <div className="relative w-full" style={{ height: '200px' }}>
                     <Image

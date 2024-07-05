@@ -45,7 +45,7 @@ export type TLoginUser = {
     conclusion: string;
     image: string; 
     authorId?: string;
-    votes:number;
+    votes?:number;
     
     createdAt: Date;
    

@@ -16,6 +16,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import { DataTablePagination } from "@/components/shared/dataTablePagination/DataTablePagination";
 // import { DataTablePagination } from "@/components/shared/DataTablePagination/DataTablePagination";
 
 
@@ -95,7 +96,7 @@ export function ToolsSkillDataTable<TData, TValue>({
         </Table>
       </div>
 
-      {/* <DataTablePagination table={table} /> */}
+      <DataTablePagination table={table} />
     </>
   );
 }
