@@ -1,29 +1,27 @@
 'use client'
 
 
-
+import { projectColumn } from '@/app/(blogs)/projects/components/projectColumn'
+import { ProjectDataTable } from '@/app/(blogs)/projects/components/projectDataTable'
+import CreateProjectForm from '@/components/form/CreateProjectForm'
 import MyDialog from '@/components/shadcn/MyDialog'
 import CustomLoader from '@/components/shared/customLoader/CustomLoader'
 
 
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
-
+import { useGetAllProjectsQuery } from '@/redux/features/project/projectApi'
 
 import { ChevronRight, Search } from 'lucide-react'
 import React, { useState } from 'react'
 
-import AddBlogForm from '@/components/form/AddBlogForm'
-import { BlogDataTable } from './components/blogDataTable'
-import { blogColumn } from './components/blogColumn'
-import { useGetAllBlogsQuery } from '@/redux/features/blog/blogApi'
 
 
 
-const AddBlogPage = () => {
+const ProjectsPage = () => {
   const query: Record<string, any> = {};
   const [page, setPage] = useState(1);
-  const [limit, setLimit] = useState(2);
+  const [limit, setLimit] = useState(8);
   query["page"] = page;
   query["limit"] = limit;
   const [q, setQ] = useState<string>("");
@@ -31,8 +29,8 @@ const AddBlogPage = () => {
 
  
 
-  const { data, isLoading } = useGetAllBlogsQuery({ ...query });
-  console.log(data)
+  const { data, isLoading } = useGetAllProjectsQuery({ ...query });
+  
 
 
   const meta = data?.meta;
@@ -59,12 +57,12 @@ const AddBlogPage = () => {
       <MyDialog
         triggerButton={
           <Button className="group flex items-center gap-2 bg-primary text-white rounded-md py-2 px-4 hover:bg-primary-dark focus:outline-none focus:ring focus:border-primary-dark">
-            <span>Add Blog</span>
+            <span>Add Project</span>
             <ChevronRight className="transition-transform duration-300 ease-in-out transform group-hover:translate-x-1" />
           </Button>
         }
       >
-       <AddBlogForm/>
+        <CreateProjectForm />
       </MyDialog>
     </div>
     <div className="flex  items-center w-full md:w-auto mb-4 md:mb-0">
@@ -83,7 +81,7 @@ const AddBlogPage = () => {
     {isLoading ? (
       <CustomLoader />
     ) : (
-      <BlogDataTable data={data?.data ?? []} columns={blogColumn} />
+      <ProjectDataTable data={data?.data ?? []} columns={projectColumn} />
     )}
   </div>
 </div>
@@ -91,4 +89,4 @@ const AddBlogPage = () => {
   )
 }
 
-export default AddBlogPage
+export default ProjectsPage

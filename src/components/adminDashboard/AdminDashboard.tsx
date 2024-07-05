@@ -15,8 +15,10 @@ import assets from '@/assets';
 import { useToast } from '../ui/use-toast';
 import { logout, useCurrentUser } from '@/redux/features/auth/authSlice';
 
-import HeaderLink from './HeaderLink';
+
 import { ToastAction } from '@radix-ui/react-toast';
+import HeaderLink from '../dashboard/HeaderLink';
+import { useRouter } from 'next/navigation';
 
 type MenuItem = {
   label: string;
@@ -24,7 +26,8 @@ type MenuItem = {
   show: boolean;
 };
 
-export function Dashboard({ children }: { children: React.ReactNode }) {
+export function AdminDashboard({ children }: { children: React.ReactNode }) {
+    const router= useRouter()
     const { toast } = useToast();
     const dispatch = useAppDispatch();
     const user = useAppSelector(useCurrentUser);
@@ -43,6 +46,7 @@ export function Dashboard({ children }: { children: React.ReactNode }) {
 
     const handleLogout = () => {
         dispatch(logout());
+        router.push("/");
         toast({
             variant: "destructive",
             title: "Logged out",
@@ -53,9 +57,11 @@ export function Dashboard({ children }: { children: React.ReactNode }) {
 
     const menuItems: MenuItem[] = [
         { label: "Home", path: "/", show: true },
-        { label: "Blogs", path: "/blogs", show: true },
-        { label: "Dashboard", path: "/dashboard/super_admin", show: !!user },
-        { label: "Contact Me", path: "/contact", show: true },
+      
+        { label: "Add Projects", path: "/dashboard/super_admin/add_project", show:true },
+        { label: "Add Skills", path: "/dashboard/super_admin/add_skill", show: true },
+        { label: "Add Blog", path: "/dashboard/super_admin/add_blog", show: true },
+       
     ];
 
     return (
@@ -100,7 +106,7 @@ export function Dashboard({ children }: { children: React.ReactNode }) {
                             src={assets.images.logo}
                             width={30}
                             height={30}
-                            alt={` logo`}
+                            alt={`logo`}
                             className="rounded-lg mr-1"
                         />
                     </Link>

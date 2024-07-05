@@ -14,9 +14,10 @@ import { ChevronRight, Search } from 'lucide-react'
 import React, { useState } from 'react'
 
 import AddBlogForm from '@/components/form/AddBlogForm'
-import { BlogDataTable } from './components/blogDataTable'
-import { blogColumn } from './components/blogColumn'
+
 import { useGetAllBlogsQuery } from '@/redux/features/blog/blogApi'
+import { BlogDataTable } from '@/app/(blogs)/add-blog/components/blogDataTable'
+import { blogColumn } from '@/app/(blogs)/add-blog/components/blogColumn'
 
 
 

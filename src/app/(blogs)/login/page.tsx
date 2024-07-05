@@ -61,7 +61,7 @@ const router =useRouter()
           <ToastAction altText="Goto schedule to undo">Undo</ToastAction>
         ),
       })
-     router.push('/blogs')
+     router.push('/dashboard/super_admin')
     } catch (err: any) {
       toast({
         variant:'destructive',
