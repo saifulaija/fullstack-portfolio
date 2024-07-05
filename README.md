@@ -1,8 +1,58 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Saiful's Portfolio Website
+
+Welcome to my portfolio website where you can explore my skills, view my projects, read my blog, and contact me directly. Built with modern technologies, this site showcases my work and expertise as a Full Stack Developer.
+
+## Technologies Used
+
+- **Next.js:** For a robust and scalable frontend.
+- **ShadCN UI:** For enhanced user interface components.
+- **Tailwind CSS:** For streamlined and responsive design.
+- **MongoDB:** For efficient and scalable data storage.
+- **Mongoose:** For elegant MongoDB object modeling.
+
+## Features
+
+- **Skills Showcase:** Browse through a detailed list of my technical skills.
+- **Projects Portfolio:** Explore various projects I have worked on, including detailed descriptions and technologies used.
+- **Blog:** Read my latest blog posts on web development and technology trends.
+- **Contact Form:** Get in touch with me directly through a simple and intuitive contact form.
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
+
+- Node.js
+- MongoDB
+
+### Installation
+
+1. **Clone the repository:**
+
+    ```bash
+    git clone https://github.com/yourusername/portfolio-website.git
+    ```
+
+2. **Navigate to the project directory:**
+
+    ```bash
+    cd portfolio-website
+    ```
+
+3. **Install dependencies:**
+
+    ```bash
+    npm install
+    ```
+
+4. **Set up environment variables:**
+
+    Create a `.env` file in the root directory and add your MongoDB URI and other necessary configurations:
+
+    ```env
+    MONGO_URI=your_mongodb_uri
+    ```
+
+5. **Start the development server:**
 
 ```bash
 npm run dev
@@ -14,7 +64,7 @@ pnpm dev
 bun dev
 ```
 
-Open [https://saifulislam-portfolio-pro.vercel.app](https://saifulislam-portfolio-pro.vercel.app) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
 You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
