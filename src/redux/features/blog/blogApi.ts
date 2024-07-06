@@ -28,10 +28,11 @@ const blogApi = baseApi.injectEndpoints({
    
 
         getAllBlogs: builder.query({
-            query: () => {
+            query:  (arg: Record<string, any>) => {
                 return {
                     url: '/blog',
                     method: "GET",
+                    query: arg
                 };
             },
             providesTags: ['blog']

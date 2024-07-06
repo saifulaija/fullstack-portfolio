@@ -1,12 +1,11 @@
 
-
 'use client'
 import Image from 'next/image'
 import { useRouter } from 'next/navigation'
 import { FaFacebook, FaWhatsapp, FaLinkedin } from 'react-icons/fa'
 import { Card, CardContent, CardFooter, CardHeader } from '@/components/ui/card'
 import { MyAvatar } from '@/components/shadcn/MyAvatar'
-import { formateDate } from '@/utils/common'
+
 import { truncateTitle } from '@/utils/truncateTitle'
 import { Button } from '@/components/ui/button'
 import { Bookmark, BookmarkCheck, Copy, ArrowBigUp } from 'lucide-react'
@@ -14,8 +13,10 @@ import { IBlog } from '@/types/blog.type'
 import { useState, useEffect } from 'react'
 import { useToast } from '@/components/ui/use-toast'
 import { ToastAction } from '@/components/ui/toast'
-import { motion } from 'framer-motion';
+import { motion } from 'framer-motion'
 import { useCountVoteMutation } from '@/redux/features/blog/blogApi'
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip'
+import { formateDate } from '@/utils/common'
 
 const BlogCard = ({ blog }: { blog: IBlog }) => {
     const [voteCountNumber, { isLoading, isError }] = useCountVoteMutation()
@@ -82,7 +83,7 @@ const BlogCard = ({ blog }: { blog: IBlog }) => {
     }
 
     return (
-        <Card onClick={handleDetails} className="w-full hover:cursor-pointer max-w-md outline-0 focus:ring-2 hover:bg-muted-foreground/15 ring-primary transition duration-300 rounded-md relative group">
+        <Card onClick={handleDetails} className="w-full hover:cursor-pointer max-w-md outline-0 focus:ring-2 ring-primary transition duration-300 rounded-md relative group">
             <CardHeader className="p-0 items-center">
                 <div className="relative w-full" style={{ height: '200px' }}>
                     <Image
@@ -106,27 +107,82 @@ const BlogCard = ({ blog }: { blog: IBlog }) => {
                 <p className="text-lg font-semibold">{truncatedTitle}</p>
             </CardContent>
             <CardFooter className='flex justify-between items-center gap-2 p-2'>
-                <a href={whatsappShareUrl} target="_blank" rel="noopener noreferrer" className="text-green-600 hover:text-green-800" onClick={(e) => e.stopPropagation()}>
-                    <FaWhatsapp className="w-5 h-5" />
-                </a>
-                <a href={facebookShareUrl} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-800" onClick={(e) => e.stopPropagation()}>
-                    <FaFacebook className="w-5 h-5" />
-                </a>
-                <a href={linkedinShareUrl} target="_blank" rel="noopener noreferrer" className="text-blue-500 hover:text-blue-700" onClick={(e) => e.stopPropagation()}>
-                    <FaLinkedin className="w-5 h-5" />
-                </a>
-                <Button variant="link" onClick={handleCopyLink}>
-                    <Copy className="w-5 h-5" />
-                </Button>
-                <Button variant="link" onClick={handleBookmark}>
-                    {isBookmarked ? <BookmarkCheck className="w-5 h-5" /> : <Bookmark className="w-5 h-5" />}
-                </Button>
-                <motion.div initial={{ scale: 1 }} animate={{ scale: 1.2 }} transition={{ duration: 0.2 }}>
-                    <Button variant="ghost" className='text-gray-500 font-bold' onClick={handleVote}>
-                        <ArrowBigUp className={`w-5 h-5 ${isUpvoted ? 'text-green-600' : ''}`} />
-                        {blog?.votes}
-                    </Button>
-                </motion.div>
+                
+                <TooltipProvider>
+                    <Tooltip>
+                        <TooltipTrigger asChild>
+                            <a href={whatsappShareUrl} target="_blank" rel="noopener noreferrer" className="text-green-600 hover:text-green-800" onClick={(e) => e.stopPropagation()}>
+                                <FaWhatsapp className="w-5 h-5" />
+                            </a>
+                        </TooltipTrigger>
+                        <TooltipContent>
+                            <p>Share on WhatsApp</p>
+                        </TooltipContent>
+                    </Tooltip>
+                </TooltipProvider>
+                <TooltipProvider>
+                    <Tooltip>
+                        <TooltipTrigger asChild>
+                            <a href={facebookShareUrl} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-800" onClick={(e) => e.stopPropagation()}>
+                                <FaFacebook className="w-5 h-5" />
+                            </a>
+                        </TooltipTrigger>
+                        <TooltipContent>
+                            <p>Share on Facebook</p>
+                        </TooltipContent>
+                    </Tooltip>
+                </TooltipProvider>
+                <TooltipProvider>
+                    <Tooltip>
+                        <TooltipTrigger asChild>
+                            <a href={linkedinShareUrl} target="_blank" rel="noopener noreferrer" className="text-blue-500 hover:text-blue-700" onClick={(e) => e.stopPropagation()}>
+                                <FaLinkedin className="w-5 h-5" />
+                            </a>
+                        </TooltipTrigger>
+                        <TooltipContent>
+                            <p>Share on LinkedIn</p>
+                        </TooltipContent>
+                    </Tooltip>
+                </TooltipProvider>
+                <TooltipProvider>
+                    <Tooltip>
+                        <TooltipTrigger asChild>
+                            <Button variant="link" onClick={handleCopyLink}>
+                                <Copy className="w-5 h-5" />
+                            </Button>
+                        </TooltipTrigger>
+                        <TooltipContent>
+                            <p>Copy Link</p>
+                        </TooltipContent>
+                    </Tooltip>
+                </TooltipProvider>
+                <TooltipProvider>
+                    <Tooltip>
+                        <TooltipTrigger asChild>
+                            <Button variant="link" onClick={handleBookmark}>
+                                {isBookmarked ? <BookmarkCheck className="w-5 h-5" /> : <Bookmark className="w-5 h-5" />}
+                            </Button>
+                        </TooltipTrigger>
+                        <TooltipContent>
+                            <p>{isBookmarked ? 'Remove Bookmark' : 'Bookmark'}</p>
+                        </TooltipContent>
+                    </Tooltip>
+                </TooltipProvider>
+                <TooltipProvider>
+                    <Tooltip>
+                        <TooltipTrigger asChild>
+                            <motion.div initial={{ scale: 1 }} animate={{ scale: 1.2 }} transition={{ duration: 0.2 }}>
+                                <Button variant="ghost" className='text-gray-500 font-bold' onClick={handleVote}>
+                                    <ArrowBigUp className={`w-5 h-5 ${isUpvoted ? 'text-green-600' : ''}`} />
+                                    {blog?.votes}
+                                </Button>
+                            </motion.div>
+                        </TooltipTrigger>
+                        <TooltipContent>
+                            <p>{isUpvoted ? 'Remove Vote' : 'Vote'}</p>
+                        </TooltipContent>
+                    </Tooltip>
+                </TooltipProvider>
             </CardFooter>
         </Card>
     )
