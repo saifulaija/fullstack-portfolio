@@ -12,10 +12,11 @@ import { Card, CardHeader } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Loader2 } from "lucide-react";
-import { TUser } from "@/types";
+
 import { verifyToken } from "@/lib/utils";
 import { useRouter } from "next/navigation";
 import { useAppDispatch } from "@/redux/hooks";
+import { TUser } from "@/types";
 
 const formSchema = z.object({
   email: z.string().email({

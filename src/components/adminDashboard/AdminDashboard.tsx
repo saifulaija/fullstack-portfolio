@@ -6,7 +6,7 @@ import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
-import { ArrowRight, Menu, UserRoundPlus } from 'lucide-react';
+import { ArrowRight, ChevronRight, Menu, UserRoundPlus } from 'lucide-react';
 import Image from 'next/image';
 import { ModeToggle } from '../shared/header/ModeToggle';
 import { useAppDispatch, useAppSelector } from '@/redux/hooks';
@@ -46,7 +46,7 @@ export function AdminDashboard({ children }: { children: React.ReactNode }) {
 
     const handleLogout = () => {
         dispatch(logout());
-        router.push("/");
+        router.push("/login");
         toast({
             variant: "destructive",
             title: "Logged out",
@@ -61,6 +61,7 @@ export function AdminDashboard({ children }: { children: React.ReactNode }) {
         { label: "Add Projects", path: "/dashboard/super_admin/add_project", show:true },
         { label: "Add Skills", path: "/dashboard/super_admin/add_skill", show: true },
         { label: "Add Blog", path: "/dashboard/super_admin/add_blog", show: true },
+        { label: "Dashboard", path: "/dashboard/super_admin", show: true },
        
     ];
 
@@ -115,7 +116,7 @@ export function AdminDashboard({ children }: { children: React.ReactNode }) {
                     <ModeToggle />
                     <div className="flex items-center gap-2">
                         {user ? (
-                            <Button onClick={handleLogout} asChild className="cursor-pointer group">
+                            <Button variant='destructive' onClick={handleLogout} asChild className="cursor-pointer group">
                                 <span className="flex items-center gap-2">
                                     Logout
                                 </span>
@@ -124,7 +125,7 @@ export function AdminDashboard({ children }: { children: React.ReactNode }) {
                             <Button asChild  className="group">
                                 <Link href="/login" className="flex items-center gap-2">
                                     Login
-                                    <ArrowRight className="transition-transform duration-300 ease-in-out transform group-hover:translate-x-1" />
+                                    <ChevronRight className="transition-transform duration-300 ease-in-out transform group-hover:translate-x-1" />
                                 </Link>
                             </Button>
                         )}

@@ -6,7 +6,7 @@ import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
-import { ArrowRight, Menu, UserRoundPlus } from 'lucide-react';
+import { ArrowRight, ChevronRight, Menu, UserRoundPlus } from 'lucide-react';
 import Image from 'next/image';
 import { ModeToggle } from '../shared/header/ModeToggle';
 import { useAppDispatch, useAppSelector } from '@/redux/hooks';
@@ -118,7 +118,7 @@ export function Dashboard({ children }: { children: React.ReactNode }) {
                             <Button asChild  className="group">
                                 <Link href="/login" className="flex items-center gap-2">
                                     Login
-                                    <ArrowRight className="transition-transform duration-300 ease-in-out transform group-hover:translate-x-1" />
+                                    <ChevronRight className="transition-transform duration-300 ease-in-out transform group-hover:translate-x-1" />
                                 </Link>
                             </Button>
                         )}

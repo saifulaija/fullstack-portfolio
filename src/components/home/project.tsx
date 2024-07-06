@@ -5,7 +5,7 @@ import Image from "next/image";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { truncateTitle } from "@/utils/truncateTitle";
 import { Button } from "../ui/button";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, ChevronRight } from "lucide-react";
 import MyDialog from "../shadcn/MyDialog";
 import ProjectDetails from "./projectDetails";
 import { TProject } from "@/types/project.type";
@@ -60,7 +60,7 @@ export default function Project({project}:{project:TProject}) {
                 <Button asChild>
                   <span className="flex items-center">
                     View Details
-                    <ArrowRight className="transition-transform duration-300 ease-in-out transform group-hover:translate-x-1 ml-1" />
+                    <ChevronRight className="transition-transform duration-300 ease-in-out transform group-hover:translate-x-1 ml-1" />
                   </span>
                 </Button>
               }

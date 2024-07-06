@@ -48,7 +48,7 @@
 //   ] as const;
 
 
-import { useEffect } from 'react';
+
 import { useAppSelector } from '@/hooks/hooks';
 import { useCurrentUser } from '@/redux/features/auth/authSlice';
 
@@ -110,3 +110,4 @@ const useLinks = () => {
 };
 
 export default useLinks;
+export type { Link };
