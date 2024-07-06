@@ -29,10 +29,8 @@ export default function Intro() {
         transition={{ duration: 0.5, ease: "easeInOut" }}
       >
       
-        <motion.div className="flex-1" initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        exit={{ opacity: 0 }}
-        transition={{ duration: 0.5, ease: "easeInOut" }}>
+        <div className="flex-1"
+        >
           <motion.div className="md:text-left text-center max-w-lg w-full"  initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, ease: "easeInOut" }}>
@@ -100,7 +98,7 @@ export default function Intro() {
               </Button>
             </div>
           </motion.div>
-        </motion.div>
+        </div>
         <motion.div className="flex-1 flex items-center justify-center h-full" variants={sectionVariants}
             initial="hidden"
             animate="visible"
